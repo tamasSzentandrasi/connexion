@@ -160,4 +160,6 @@ class SecureOperation(object):
         object is returned.
         :rtype: types.FunctionType
         """
-        return RequestResponseDecorator(self.api, self.get_mimetype())
+        #IncQueryLabs addition, 1 line plus no get_mimetype ((default))
+        mimetype = self.request_body.get('content').keys().__str__()[12:-3]
+        return RequestResponseDecorator(self.api, mimetype)
